@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //movement variables
     private float moveSpeed = 4f;
-    public static float playerHealth = 1f;
-    [SerializeField] private Rigidbody2D rb;
+    private Rigidbody2D rb;
     Vector2 movement;
 
     private void Start()
     {
-        playerHealth = 1f;
+        rb = GetComponent<Rigidbody2D>();
     }
     private void Move()
     {

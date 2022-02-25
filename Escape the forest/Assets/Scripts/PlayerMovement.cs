@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movement;
 
     //dash variables
-    private float activeMoveSpeed;
+    private float activeMoveSpeed = 4f;
     private float dashSpeed = 25f;
     private float dashLength = 0.2f;
     private float dashCoolDown = 3f;
@@ -31,12 +31,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse1) && dashCoolCounter <= 0 && dashCounter <= 0)
         {
-            
-            
             {
                 activeMoveSpeed = dashSpeed;
                 dashCounter = dashLength;
-                Debug.Log("Detecting space");
             }
         }
         if (dashCounter > 0)
@@ -48,7 +45,6 @@ public class PlayerMovement : MonoBehaviour
                 dashCoolCounter = dashCoolDown;
             }
         }
-
         if (dashCoolCounter > 0)
         {
             dashCoolCounter -= Time.deltaTime;
@@ -61,7 +57,6 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        //rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
         rb.velocity = movement * activeMoveSpeed;
     }
 }
